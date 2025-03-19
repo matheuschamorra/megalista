@@ -113,6 +113,7 @@ class GoogleAdsOfflineUploaderDoFn(MegalistaUploader):
         'conversion_date_time': utils.format_date(row['time']),
         'conversion_value': float(str(row['amount'])),
         'gclid': row['gclid']
+        'conversion_environment': row['conversion_environment']
       }
       #adds external attribution data if provided
       if 'external_attribution_credit' in row and 'external_attribution_model' in row:
