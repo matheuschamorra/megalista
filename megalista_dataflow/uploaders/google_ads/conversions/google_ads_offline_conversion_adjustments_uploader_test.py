@@ -131,12 +131,14 @@ def test_conversion_upload_with_gclids(mocker, uploader):
         'conversion_time': time1,
         'time': time2,
         'amount': '456',
+        'conversion_environment': 'app',
     }
     element2 = {
         'gclid': '789',
         'conversion_time': time3,
         'time': time4,
         'amount': '101',
+        'conversion_environment': 'app',
     }
 
     batch = Batch(execution, [element1, element2])
@@ -232,6 +234,7 @@ def test_conversion_upload_with_order_ids(mocker, uploader_order_id):
         'time': time2,
         'adjustment_type': 'RESTATEMENT',
         'amount': '456',
+        'conversion_environment': 'app',
     }
     element2 = {
         'order_id': 'AAA456',
@@ -239,6 +242,7 @@ def test_conversion_upload_with_order_ids(mocker, uploader_order_id):
         'time': time4,
         'adjustment_type': 'RESTATEMENT',
         'amount': '101',
+        'conversion_environment': 'app',
     }
 
     batch = Batch(execution, [element1, element2])
@@ -335,6 +339,7 @@ def test_upload_with_ads_account_override(mocker, uploader):
         'time': time2,
         'adjustment_type': 'RESTATEMENT',
         'amount': '456',
+        'conversion_environment': 'app',
     }
     element2 = {
         'order_id': '',
@@ -343,6 +348,7 @@ def test_upload_with_ads_account_override(mocker, uploader):
         'time': time4,
         'adjustment_type': 'RESTATEMENT',
         'amount': '101',
+        'conversion_environment': 'app',
     }
 
     batch = Batch(execution, [element1, element2])
@@ -437,6 +443,7 @@ def test_should_not_notify_errors_when_api_call_is_successful(
         'time': time1,
         'adjustment_type': 'RESTATEMENT',
         'amount': '456',
+        'conversion_environment': 'app',
     }
 
     batch = Batch(execution, [element1])
@@ -487,6 +494,7 @@ def test_error_notification(mocker, uploader, error_notifier):
         'time': time1,
         'adjustment_type': 'RESTATEMENT',
         'amount': '456',
+        'conversion_environment': 'app',
     }
     batch = Batch(execution, [element1])
 
@@ -552,6 +560,7 @@ def test_conversion_upload_and_error_notification(mocker, uploader, error_notifi
         'time': time2,
         'adjustment_type': 'RESTATEMENT',
         'amount': '456',
+        'conversion_environment': 'app',
     }
     element2 = {
         'order_id': '',
@@ -560,6 +569,7 @@ def test_conversion_upload_and_error_notification(mocker, uploader, error_notifi
         'time': time4,
         'adjustment_type': 'RESTATEMENT',
         'amount': '101',
+        'conversion_environment': 'app',
     }
     batch = Batch(execution, [element1, element2])
 
