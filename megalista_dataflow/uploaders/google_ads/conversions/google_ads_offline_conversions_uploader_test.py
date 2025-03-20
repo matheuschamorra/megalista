@@ -87,12 +87,14 @@ def test_conversion_upload(mocker, uploader):
   element1 = {
     'time': time1,
     'amount': '123',
-    'gclid': '456'
+    'gclid': '456',
+    'conversion_environment': 'app'
   }
   element2 = {
     'time': time2,
     'amount': '234',
-    'gclid': '567'
+    'gclid': '567',
+    'conversion_environment': 'app'
   }
   batch = Batch(execution, [element1, element2])
 
@@ -127,12 +129,14 @@ def test_conversion_upload(mocker, uploader):
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time1_result,
       'conversion_value': 123,
-      'gclid': '456'
+      'gclid': '456',
+      'conversion_environment': 'app'
     }, {
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time2_result,
       'conversion_value': 234,
-      'gclid': '567'
+      'gclid': '567',
+      'conversion_environment': 'app'
     }]
   })
 
@@ -158,11 +162,13 @@ def test_upload_with_ads_account_override(mocker, uploader):
   batch = Batch(execution, [{
     'time': time1,
     'amount': '123',
-    'gclid': '456'
+    'gclid': '456',
+    'conversion_environment': 'app'
   }, {
     'time': time2,
     'amount': '234',
-    'gclid': '567'
+    'gclid': '567',
+    'conversion_environment': 'app'
   }])
 
   gclid_result_mock1 = MagicMock()
@@ -192,12 +198,14 @@ def test_upload_with_ads_account_override(mocker, uploader):
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time1_result,
       'conversion_value': 123,
-      'gclid': '456'
+      'gclid': '456',
+      'conversion_environment': 'app'
     }, {
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time2_result,
       'conversion_value': 234,
-      'gclid': '567'
+      'gclid': '567',
+      'conversion_environment': 'app'
     }]
   })
 
@@ -219,7 +227,8 @@ def test_should_not_notify_errors_when_api_call_is_successful(mocker, uploader, 
   element1 = {
     'time': time1,
     'amount': '123',
-    'gclid': '456'
+    'gclid': '456',
+    'conversion_environment': 'app'
   }
   batch = Batch(execution, [element1])
 
@@ -259,7 +268,8 @@ def test_error_notification(mocker, uploader, error_notifier):
   element1 = {
     'time': time1,
     'amount': '123',
-    'gclid': '456'
+    'gclid': '456',
+    'conversion_environment': 'app'
   }
   batch = Batch(execution, [element1])
 
@@ -304,12 +314,14 @@ def test_conversion_upload_and_error_notification(mocker, uploader, error_notifi
     'time': time1,
     'amount': '123',
     'gclid': '456',
+    'conversion_environment': 'app',
 
   }
   element2 = {
     'time': time2,
     'amount': '234',
-    'gclid': '567'
+    'gclid': '567',
+    'conversion_environment': 'app'
   }
   batch = Batch(execution, [element1, element2])
 
@@ -348,12 +360,14 @@ def test_conversion_upload_and_error_notification(mocker, uploader, error_notifi
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time1_result,
       'conversion_value': 123,
-      'gclid': '456'
+      'gclid': '456',
+      'conversion_environment': 'app'
     }, {
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time2_result,
       'conversion_value': 234,
-      'gclid': '567'
+      'gclid': '567',
+      'conversion_environment': 'app'
     }]
   })
 
@@ -388,13 +402,15 @@ def test_conversion_upload_and_error_notification_with_external_attribution(mock
     'time': time1,
     'amount': '123',
     'gclid': '456',
+    'conversion_environment': 'app',
     'external_attribution_credit': 0.6,
     'external_attribution_model': 'teste_attribution'
   }
   element2 = {
     'time': time2,
     'amount': '234',
-    'gclid': '567'
+    'gclid': '567',
+    'conversion_environment': 'app'
   }
   batch = Batch(execution, [element1, element2])
 
@@ -436,6 +452,7 @@ def test_conversion_upload_and_error_notification_with_external_attribution(mock
       'conversion_date_time': time1_result,
       'conversion_value': 123,
       'gclid': '456',
+      'conversion_environment': 'app',
       'external_attribution_data': {
         'external_attribution_credit': 0.6,
         'external_attribution_model': 'teste_attribution'
@@ -444,7 +461,8 @@ def test_conversion_upload_and_error_notification_with_external_attribution(mock
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time2_result,
       'conversion_value': 234,
-      'gclid': '567'
+      'gclid': '567',
+      'conversion_environment': 'app'
     }]
   })
 
@@ -474,13 +492,15 @@ def test_conversion_upload_with_consent(mocker, uploader):
     'time': time1,
     'amount': '123',
     'gclid': '456',
+    'conversion_environment': 'app',
     'consent_ad_user_data': 'GRANTED',
     'consent_ad_personalization': 'DENIED'
   }
   element2 = {
     'time': time2,
     'amount': '234',
-    'gclid': '567'
+    'gclid': '567',
+    'conversion_environment': 'app'
   }
   batch = Batch(execution, [element1, element2])
 
@@ -516,6 +536,7 @@ def test_conversion_upload_with_consent(mocker, uploader):
       'conversion_date_time': time1_result,
       'conversion_value': 123,
       'gclid': '456',
+      'conversion_environment': 'app',
       'consent': {
         'ad_user_data': 'GRANTED',
         'ad_personalization': 'DENIED'
@@ -524,6 +545,7 @@ def test_conversion_upload_with_consent(mocker, uploader):
       'conversion_action': conversion_resource_name,
       'conversion_date_time': time2_result,
       'conversion_value': 234,
-      'gclid': '567'
+      'gclid': '567',
+      'conversion_environment': 'app'
     }]
   })
